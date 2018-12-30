@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+}
+.floatL {
+     float: left;
+}
+.floatR {
+     float: right;
+}
+.float-fix {
+    clear: both;
+}
+.aukstis-100 {
+    height: 100px;
+}
+.aukstis-200 {
+    height: 200px;
+}
+.aukstis-300 {
+    height: 300px;
+}
+.aukstis-400 {
+    height: 400px;
+}
+.aukstis-500 {
+    height: 500px;
+}
+.fonas-rud {
+    background-color: brown;
+}
+.fonas-gelt {
+    background-color: yellow;
+}
+.fonas-oran {
+    background-color: orange;
+}
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
+/* ------- */
+
+body {
+  background-color: #7ad3e0;
+}
+
+article {
+  background-color: #7ad975;
+  text-align: center;
+  width: 60%;
+}
+
+aside {
+  background-color: #5b68b3;
+  text-align: center;
+  width: 35%;
+  max-height: 350px;
+}
+
+footer p {
+    text-align: center;
+}
+.paieska {
+    background-color: #eeaf46;
+    display: inline-block;
+    width:auto;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 25px;
+    margin-right: 20px;
+}
+.negerasInput {
+  box-shadow: 0 0 5px 1px red;
+}
+/*--------Formos---------------*/
+
+input {
+  padding-left: 15px;
+  text-align: center;
+}
+
+/*------- Tekstas---------------*/
+
+a:link {
+  text-decoration: none;
+  color: rgba(73, 73, 82, 0.83);
+}
+
+a:link {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+a:visited {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+a:active {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+
+/*------- Meniu---------------*/
+
+nav {
+  width: 60%;
+  background-color: #a7bfb1;
+  padding-left: 15%;
+  margin-bottom: 10px;
+}
+
+ul {
+  padding: 0;
+
+}
+
+li {
+  display: inline-block;
+  width: 24,5%;
+  text-transform: uppercase;
+  font-size: 26px;
+  margin-top: 8px;
+  margin-left: 12px;
+
+}
+@media only screen and (max-width: 500px) {
+    li {
+      font-size: 20px;
+      margin-left: 8px;
+    }
+
+}
+@media only screen and (max-width: 1023px) {
+    nav {
+      width: 100%;
+    }
+    .paieska {
+      margin-top: 0;
+    }
+}
+@media only screen and (max-width: 800px) {
+    ul {
+        text-align: center;
+    }
+    nav {
+      padding-left: 0%;
+    }
+}
