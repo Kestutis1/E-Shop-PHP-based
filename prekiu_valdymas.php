@@ -1,15 +1,19 @@
 <?php
       include('header.php');
       include('db.php');
+
 ?>
-      <section>
 
-        <article class="">
 
+<section>
+
+    <article class="">
 
         <h1>Administratoriaus puslapis</h1>
 
-          <form class="" id="pre_sukurimas" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+
+
+        <form class="" id="pre_sukurimas" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
                 <label>Pasirinkti prekės kategoriją</label><br />
                     <select name="kategorija" size="3">
                       <option value="1">Marškinėliai</option>
@@ -17,42 +21,21 @@
                       <option value="3">Striukė</option>
                     </select><br />
                 <label>Prekės pavadinimas</label><br />
-                    <input type="text" name="prePavadinimas" value=""><br />
+                    <input id="pre_pavadinimas" type="text" title="" name="prePavadinimas" value="" required><br />
                 <label>Prekės kaina</label><br />
-                    <input type="number" name="preKaina" value=""><br />
+                    <input id="pre_kaina" type="number" title="" name="preKaina" value=""><br />
                     <label for="aprašymas">Prekės aprašymas</label><br/>
                     <textarea name="aprašymas" rows="8" cols="40"></textarea><br /><br />
                 <button type="submit" name="ĮkeltiPrekę">Iįkelti</button>
-            </form>
+          </form>
 
+<?php
+// IDEA: Jaigu jau įkėlėm prekę į duombazę ir susigražinom jos id paslepiam prekįs įkėlimo formą.
+        if(isset($_GET['id'])) {
+              include_once('papil_pre_kategor.php');
+              echo "<script> document.getElementById('pre_sukurimas').style.display = 'none'; </script>";
+            }
 
-          <form id="dydis" class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-                <label>Pasirinkti prekės dydį</label><br />
-                    <select name="dydis">
-                      <option value="S">S</option>
-                      <option value="M">M</option>
-                      <option value="L">L</option>
-                      <option value="M">XL</option>
-                      <option value="XXL">XXL</option>
-                    </select><br />
-                <button type="submit" name="Įkelti_dydi">Iįkelti</button>
-            </form>
-
-
-          <form id="spalva" class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-                <label>Pasirinkti prekės spalva</label><br />
-                    <select name="dydis">
-                      <option value="Juoda">Juoda</option>
-                      <option value="Balta">Balta</option>
-                      <option value="Ruda">Ruda</option>
-                    </select><br />
-
-                <button type="submit" name="Įkelti_spalvą">Iįkelti</button>
-            </form>
-
-
-
-      <?php
 
         // IDEA: Pradedu straipsnio įkėlimą į duombazę.
 
@@ -96,11 +79,9 @@
               header("Location: prekiu_valdymas.php?id=$last_id");
       }
 
+?>
 
-
-      ?>
-
-      </article>
+          </article>
 
       </section>
 

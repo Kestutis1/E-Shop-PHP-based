@@ -19,3 +19,11 @@ if($prisijungimas && $rodytiŽinute){
 } else {
   echo "<h4>Nepavyko prisijungti prie duomenų bazės</h4>";
 }
+
+// IDEA: funkcija skirta išvalyti formų įvestis.
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
