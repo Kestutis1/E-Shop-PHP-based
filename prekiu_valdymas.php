@@ -9,7 +9,7 @@
 
         <h1>Administratoriaus puslapis</h1>
 
-          <form class="" id="pre_sukurimas" action="<?php echo htmlspecialchars('ikelti_preke.php');?>" method="get">
+          <form class="" id="pre_sukurimas" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
                 <label>Pasirinkti prekės kategoriją</label><br />
                     <select name="kategorija" size="3">
                       <option value="1">Marškinėliai</option>
@@ -92,7 +92,8 @@
           // $ikeliamSpalva = mysqli_query(getPrisijungimas(), $SQLspalva);
           // $ikeliamDydi = mysqli_query(getPrisijungimas(), $SQLdydis);
 
-              echo "<h3>Jūsų straipsnis sėkmingai įkeltas</h3>".$last_id;
+              echo "<h3>Jūsų prekė sėkmingai įkelta</h3>";
+              header("Location: prekiu_valdymas.php?id=$last_id");
       }
 
 
