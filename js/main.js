@@ -15,16 +15,40 @@ function par_formas () {
     document.getElementById("spalva").style.display = "block";
 }
 
-// IDEA: Susitvarkou prekių sukūrimo formos prekiu_valdymas.php įvesčių validaciją Prekės pavadinimas.
-if (document.getElementById("pre_pavadinimas")) {
-      var pre_pavadinimas = document.getElementById("pre_pavadinimas");
-      pre_pavadinimas.setCustomValidity("Prekės pavadinimo laukelį reikia užpildyti");
+$("#pre_ikelimas").validate({
 
-      pre_pavadinimas.oninvalid = function (event) {
-          event.target.setCustomValidity("Prekės pavadinimas turi būti užpildytas raidžių simboliais");
-      }
+    errorPlacement: function(error, element) {
 
-      pre_pavadinimas.oninput = function (event) {
-          event.target.setCustomValidity("");
-      }
-}
+        // name attrib of the field
+		var n = element.attr("name");
+
+		if (n == "prePavadinimas")
+			element.attr("placeholder", "Prekės pavadinimą reikia įvesti");
+		else if (n == "preKaina")
+			element.attr("placeholder", "Prekės kainą reikia įvesti iš skaičių");
+    },
+    rules: {
+        prePavadinimas: {
+            minlength: 2,
+            required: true
+        },
+        preKaina: {
+            required: true,
+            number: true
+        }
+    },
+    highlight: function(element) {
+
+        // add a class "has_error" to the element
+        $(element).addClass('has_error');
+    },
+    unhighlight: function(element) {
+
+        // remove the class "has_error" from the element
+        $(element).removeClass('has_error');
+    },
+    submitHandler: function(form) {
+
+       // submit form now.
+    }
+});

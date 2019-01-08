@@ -34,21 +34,34 @@
 .fonas-oran {
     background-color: orange;
 }
-.flex-container {
-  display: flex;
-  justify-content: flex-start;
+.has_error {
+  background-color: red;
+}
+.has_error::placeholder {
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+.has_error:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: white;
+}
+
+.has_error::-ms-input-placeholder { /* Microsoft Edge */
+ color: white;
 }
 /* ------- */
 
 body {
   background-color: #7ad3e0;
+  font-family: 'Staatliches', cursive;
 }
 
 article {
   background-color: #7ad975;
-  text-align: center;
   width: 60%;
+  margin: auto;
 }
+
 
 aside {
   background-color: #5b68b3;
@@ -59,6 +72,28 @@ aside {
 
 footer p {
     text-align: center;
+    margin-top: 100px;
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+/*--------Formos---------------*/
+form {
+  padding-bottom: 15px;
+}
+form label {
+display: inline-block;
+margin-top: 15px;
+margin-bottom: 3px;
+}
+
+select {
+  width: 100%;
+}
+
+input {
+  width: 100%;
 }
 .paieska {
     background-color: #eeaf46;
@@ -72,13 +107,6 @@ footer p {
 .negerasInput {
   box-shadow: 0 0 5px 1px red;
 }
-/*--------Formos---------------*/
-
-input {
-  padding-left: 15px;
-  text-align: center;
-}
-
 /*------- Tekstas---------------*/
 
 a:link {
