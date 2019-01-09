@@ -50,8 +50,6 @@
 
       // IDEA: Susitvarkom kintamuosius.
             $katId = mysqli_real_escape_string(getPrisijungimas(), $_GET['kategorija']);
-            // $spalva = mysqli_real_escape_string(getPrisijungimas(), $_GET['spalva']);
-            // $dydis = mysqli_real_escape_string(getPrisijungimas(), $_GET['dydis']);
             $prePavadinimas = mysqli_real_escape_string(getPrisijungimas(), $_GET['prePavadinimas']);
             $preKaina = mysqli_real_escape_string(getPrisijungimas(), $_GET['preKaina']);
             $preAprašymas = mysqli_real_escape_string(getPrisijungimas(), $_GET['aprašymas']);
@@ -62,16 +60,10 @@
           $SQL = "INSERT INTO `prekes` (`id`, `kat_id`, `prekės_pavadinimas`, `prekės_kaina`, `prekės_aprašymas`)
                   VALUES (NULL, '$katId', '$prePavadinimas', '$preKaina', '$preAprašymas');";
 
-          // $SQLdydis = "INSERT INTO `prekiu_dydis` (`prekės_id`, `prekės_dydis`)
-          //         VALUES (NULL, '$dydis');";
-          // $SQLspalva = "INSERT INTO `prekiu_spalvos` (`prekės_id`, `prekės_spalva`)
-          //               VALUES (NULL, '$spalva');";
+
           $ikeliam = mysqli_query(getPrisijungimas(), $SQL);
           $last_id = mysqli_insert_id(getPrisijungimas());
 
-
-          // $ikeliamSpalva = mysqli_query(getPrisijungimas(), $SQLspalva);
-          // $ikeliamDydi = mysqli_query(getPrisijungimas(), $SQLdydis);
 
               echo "<h3>Jūsų prekė sėkmingai įkelta</h3>";
               header("Location: prekiu_valdymas.php?id=$last_id");
