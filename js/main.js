@@ -52,3 +52,9 @@ $("#pre_ikelimas").validate({
        // submit form now.
     }
 });
+
+// if (document.querySelector("form")) {
+//   var forma = document.querySelector("form").addEventListener("submit", function(event){
+//     ga('send', 'event', 'mygtukas', 'uzsirasyti', 'siusti-paraiska');
+//   })
+//   }
