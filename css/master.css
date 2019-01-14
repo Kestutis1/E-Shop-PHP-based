@@ -49,6 +49,11 @@
 .has_error::-ms-input-placeholder { /* Microsoft Edge */
  color: white;
 }
+
+.centre {
+  margin-left: 15%;
+  margin-right: 15%;
+}
 /* ------- */
 
 body {
@@ -60,6 +65,8 @@ article {
   background-color: #7ad975;
   width: 60%;
   margin: auto;
+  margin-bottom: 15px;
+  min-height: 520px;
 }
 
 
@@ -76,7 +83,15 @@ footer p {
 }
 .flex-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+.flex-container > div {
+  align-content: center;
+}
+.flex-item {
+  padding: 5px;
 }
 /*--------Formos---------------*/
 form {

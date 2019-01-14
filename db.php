@@ -12,12 +12,12 @@ mysqli_set_charset($prisijungimas, 'utf8');
       return  $prisijungimas;
   };
 
-$rodytiŽinute = true;
+$rodytiŽinute = false;
 
 if($prisijungimas && $rodytiŽinute){
   echo "<h4>Sėkmingai prisijungėme prie duomenų bazės</h4>";
 } else {
-  echo "<h4>Nepavyko prisijungti prie duomenų bazės</h4>";
+  echo "";
 }
 
 // IDEA: funkcija skirta išvalyti formų įvestis.
