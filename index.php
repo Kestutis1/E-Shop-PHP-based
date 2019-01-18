@@ -2,7 +2,7 @@
 // IDEA: Įsikeliam prisijungimą prie duombazės.
 include('db.php');
 
-    $dispaly_block = "<h1>Prekių kategorijos</h1>
+    $display_block = "<h1>Prekių kategorijos</h1>
     <p>Pasirinkite kategoriją pamatytį jos prekes:</p><br />";
 
     // IDEA: Kategorijų rodymas
@@ -12,14 +12,14 @@ include('db.php');
                       or die(mysqli_error(getPrisijungimas()));
 
 if (mysqli_num_rows($get_cats_res) < 1) {
-    $dispaly_block = "<p>Atsiprašome nėra kategorijų peržiūrėti</p><br />";
+    $display_block = "<p>Atsiprašome nėra kategorijų peržiūrėti</p><br />";
 } else {
     while ($cats = mysqli_fetch_array($get_cats_res)) {
       $cat_id = $cats['id'];
       $cat_title = strtoupper(stripslashes($cats['kat_pavadinimas']));
       $cat_desc = stripslashes($cats['kat_aprašymas']);
 
-      $dispaly_block .= "<p><strong><a href=\"".$_SERVER["PHP_SELF"].
+      $display_block .= "<p><strong><a href=\"".$_SERVER["PHP_SELF"].
       "?cat_id=".$cat_id."\">".$cat_title."</a></strong><br />"
       .$cat_desc."</p><br />";
 
@@ -33,19 +33,19 @@ if (mysqli_num_rows($get_cats_res) < 1) {
                                 or die(mysqli_error(getPrisijungimas()));
 
               if (mysqli_num_rows($get_items_res) < 1) {
-                  $dispaly_block = "<p>Atsiprašome nėra prekių šioje kategorijoje</p><br />";
+                  $display_block = "<p>Atsiprašome nėra prekių šioje kategorijoje</p><br />";
                 } else {
-                      $dispaly_block .="<ul>";
+                      $display_block .="<ul>";
                       while ($items = mysqli_fetch_array($get_items_res)) {
                         $item_id = $items['id'];
                         $item_title = stripslashes($items['prekės_pavadinimas']);
                         $item_price = $items['prekės_kaina'];
 
-                        $dispaly_block .= "<li><a href=\"showitem.php?item_id="
+                        $display_block .= "<li><a href=\"showitem.php?item_id="
                         .$item_id."\">".$item_title."</a></strong>
                         (€ ".$item_price.")</li><br />";
                       }
-                      $dispaly_block .="</ul><br />";
+                      $display_block .="</ul><br />";
                 }
                 // IDEA: Atlaisvinami rezultatai.
                 mysqli_free_result($get_items_res);
@@ -63,6 +63,6 @@ include('header.php');
     echo "<section><article><div class = 'flex-container'>
           <div><h1>Parduotuvės prekių pasirinkimas
           </h1><br /><div class = 'centre'>
-          $dispaly_block</div></div></div></article></section>";
+          $display_block</div></div></div></article></section>";
 
 include('footer.php'); ?>
