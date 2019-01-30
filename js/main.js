@@ -39,17 +39,16 @@ $("#pre_ikelimas").validate({
     },
     highlight: function(element) {
 
-        // add a class "has_error" to the element
+
         $(element).addClass('has_error');
     },
     unhighlight: function(element) {
 
-        // remove the class "has_error" from the element
+
         $(element).removeClass('has_error');
     },
     submitHandler: function(form) {
 
-       // submit form now.
     }
 });
 
