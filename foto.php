@@ -1,39 +1,14 @@
 <?php
       include('header.php');
       include('db.php');
-      $pre_pavadinimas = (isset($_GET['prePavadinimas']) == true) ?  $_GET['prePavadinimas'] : '';
-      $pre_kaina = (isset($_GET['aprašymas']) == true) ?  $_GET['aprašymas'] : '';
+
 ?>
 
 
 <section>
 
-    <article>
-          <div class="flex-container">
-            <form class="" name="ikelimas" id="ikelimas" method="post" action="foto.php" enctype="multipart/form-data">
-                <label>Pasirinkti prekės kategoriją</label><br />
-                    <select name="kategorija" size="3">
-                      <option value="1">Marškinėliai</option>
-                      <option value="2">Kepurės</option>
-                      <option value="3">Striukė</option>
-                    </select><br />
-                  <label>Prekės pavadinimas</label><br />
-                      <input id="prePavadinimas" type="text" title="" name="prePavadinimas" value="<?php echo $pre_pavadinimas; ?>" autocomplete="on"><br />
-                  <label>Prekės kaina</label><br />
-                      <input id="preKaina" type="number" title="" name="preKaina" value="<?php echo $pre_kaina; ?>"><br />
-                  <label>Prekės nuotrauka</label><br />
-                      <input id="nuotrauka" type="file" title="" name="nuotrauka"><br />
-                  <label for="aprašymas">Prekės aprašymas</label><br/>
-                      <textarea name="aprašymas" rows="8" cols="40"></textarea><br /><br />
-                      <input type="submit" name="ĮkeltiPrekę" value="Įkelti">
-              </form>
-            </div>
+
 <?php
-// IDEA: Jaigu jau įkėlėm prekę į duombazę ir susigražinom jos id paslepiam prekįs įkėlimo formą.
-        if(isset($_GET['id'])) {
-              include_once('papil_pre_kategor.php');
-              echo "<script> document.getElementById('ikelimas').style.display = 'none'; </script>";
-            }
 
 
         // IDEA: Pradedu straipsnio įkėlimą į duombazę.
@@ -67,7 +42,7 @@
       // IDEA: Tikrinam nuotrauką ir jai viskas gerai įkeliam ją į nuotraukų papkę.
                 if (in_array($nuotraukaActualExt, $allowed)) {
                       if ($nuotraukaError === 0) {
-                            if ($nuotraukaSize > 1000000) {
+                            if ($nuotraukaSize < 1000000) {
 
                               // IDEA: keičiam nuotraukos pavadinimą į unikalų.
                                   $naujasNuotrPav = uniqid('', true).".".$nuotraukaActualExt;
@@ -91,7 +66,7 @@
           $ikeliam = mysqli_query(getPrisijungimas(), $SQL);
           $last_id = mysqli_insert_id(getPrisijungimas());
               echo "<h3>Jūsų prekė sėkmingai įkelta</h3>";
-              header("Location: prekiu_valdymas.php?id=$last_id");
+              // header("Location: prekiu_valdymas.php?id=$last_id");
       }
 ?>
 
