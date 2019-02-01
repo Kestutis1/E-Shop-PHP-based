@@ -61,8 +61,8 @@
 
 
       // IDEA: Pradedam SQL ir kintaūjų įrašymą į duomenų bazę.
-          $SQL = "INSERT INTO `prekes` (`id`, `kat_id`, `prekės_pavadinimas`, `prekės_kaina`, `prekės_aprašymas`)
-                  VALUES (NULL, '$katId', '$prePavadinimas', '$preKaina', '$preAprašymas');";
+          $SQL = "INSERT INTO `prekes` (`id`, `kat_id`, `prekės_pavadinimas`, `prekės_kaina`, `prekės_aprašymas`, `prekės_nuotrauka`)
+                  VALUES (NULL, '$katId', '$prePavadinimas', '$preKaina', '$preAprašymas', '$nuotraukosIkelimas');";
           $ikeliam = mysqli_query(getPrisijungimas(), $SQL);
           $last_id = mysqli_insert_id(getPrisijungimas());
               echo "<h3>Jūsų prekė sėkmingai įkelta</h3>";
