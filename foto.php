@@ -39,16 +39,30 @@
       // IDEA: Nusistatom leistinų nuotraukų tipus.
             $allowed = array('jpg','jpeg', 'png', 'pdf');
 
+
+
+
+      // IDEA: Pradedam SQL ir kintaūjų įrašymą į duomenų bazę.
+          $SQL = "INSERT INTO `prekes` (`id`, `kat_id`, `prekės_pavadinimas`, `prekės_kaina`, `prekės_aprašymas`)
+                  VALUES (NULL, '$katId', '$prePavadinimas', '$preKaina', '$preAprašymas');";
+          $ikeliam = mysqli_query(getPrisijungimas(), $SQL);
+          $last_id = mysqli_insert_id(getPrisijungimas());
+      // IDEA: Susigražinam prekės id kurį panaudosim nuotraukos pavadinime.
+
       // IDEA: Tikrinam nuotrauką ir jai viskas gerai įkeliam ją į nuotraukų papkę.
                 if (in_array($nuotraukaActualExt, $allowed)) {
                       if ($nuotraukaError === 0) {
                             if ($nuotraukaSize < 1000000) {
 
                               // IDEA: keičiam nuotraukos pavadinimą į unikalų.
-                                  $naujasNuotrPav = uniqid('', true).".".$nuotraukaActualExt;
+                                  $naujasNuotrPav = "prekė".$last_id.".".$nuotraukaActualExt;
 
                                   $nuotraukosIkelimas = 'img/'.$naujasNuotrPav;
                                   move_uploaded_file($nuotraukaTmpPavadinimas, $nuotraukosIkelimas);
+                                  $SQL_foto = "INSERT INTO `prekiu_nuotr` ( `prekės_id`, `status`)
+                                                VALUES('$last_id', 1);";
+                                  $ikeliamNuotrauka = mysqli_query(getPrisijungimas(), $SQL_foto);
+                                      echo "<h3>Jūsų prekė sėkmingai įkelta</h3>";
                             } else {
                               echo "Jūsų nuotrauką užima perdaug vietos.";
                             }
@@ -56,16 +70,14 @@
                           echo "Įvyko error ikeliant jūsų nuotrauką.";
                       }
                 } else {
-                    echo "Jūs negalite įkelti prekei nuotraukos šio formato";
+                    echo "Jūs nepasirinkote prekei nuotraukos arba jos formatas netinkamas";
+                    $SQL_foto = "INSERT INTO `prekiu_nuotr` ( `prekės_id`, `status`)
+                                  VALUES('$last_id', 0);";
+                    $ikeliamNuotrauka = mysqli_query(getPrisijungimas(), $SQL_foto);
                 }
 
 
-      // IDEA: Pradedam SQL ir kintaūjų įrašymą į duomenų bazę.
-          $SQL = "INSERT INTO `prekes` (`id`, `kat_id`, `prekės_pavadinimas`, `prekės_kaina`, `prekės_aprašymas`, `prekės_nuotrauka`)
-                  VALUES (NULL, '$katId', '$prePavadinimas', '$preKaina', '$preAprašymas', '$nuotraukosIkelimas');";
-          $ikeliam = mysqli_query(getPrisijungimas(), $SQL);
-          $last_id = mysqli_insert_id(getPrisijungimas());
-              echo "<h3>Jūsų prekė sėkmingai įkelta</h3>";
+
               // header("Location: prekiu_valdymas.php?id=$last_id");
       }
 ?>
