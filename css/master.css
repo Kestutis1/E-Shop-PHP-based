@@ -129,6 +129,12 @@ input {
 .negerasInput {
   box-shadow: 0 0 5px 1px red;
 }
+.mygtukas {
+  width: 50%;
+}
+form .mygtukas {
+  margin-left: 25%;
+}
 /*------- Tekstas---------------*/
 
 a:link {
@@ -156,7 +162,9 @@ a:active {
     color: rgba(73, 73, 82, 0.83);
 }
 
-
+h1 {
+  text-align: center;
+}
 /*------- Meniu---------------*/
 
 nav {
