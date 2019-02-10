@@ -17,7 +17,7 @@
 
     <article>
           <div class="flex-container">
-            <form class="" name="ikelimas" id="ikelimas" method="post" action="foto.php" enctype="multipart/form-data">
+              <form class="" name="ikelimas" id="ikelimas" method="post" action="foto.php" enctype="multipart/form-data">
                 <label>Pasirinkti prekės kategoriją</label><br />
                     <select name="kategorija">
                       <option value="1">Marškinėliai</option>
@@ -37,6 +37,43 @@
               </form>
             </div>
 
+<?php
+        if (!isset($_GET['sekme'])) {
+              exit();
+        } else {
+                  $signupCheck = $_GET['sekme'];
+                  if ($signupCheck == "ikelta") {
+                      echo "<script> if (document.getElementById('ikelimas')) {
+                            document.getElementById('ikelimas').style.display = 'none';
+                      } </script>";
+                      echo "<h3 class='centre'>Jūsų prekė sėkmingai įkelta.</h3>";
+                      exit();
+                  }
+                  elseif ($signupCheck == "dydis") {
+                      echo "<p class='centre'>Jūsų nuotrauką užima perdaug vietos.</p>";
+                      exit();
+                  }
+                  elseif ($signupCheck == "dydis") {
+                      echo "<p class='centre'>Jūsų nuotrauką užima perdaug vietos. Ji turi būti nedidesnė 1000000 baitų.</p>";
+                      exit();
+                  }
+                  elseif ($signupCheck == "error") {
+                        echo "<p class='centre'>Įvyko error ikeliant jūsų nuotrauką.</p>";
+                      exit();
+                  }
+                  elseif ($signupCheck == "netinkamas") {
+                      echo "<p class='centre'>Jūsų pasirinkta nuotrauka yra netinkamo formato. Pasirinkite jpg, jpeg, png, aba pdf formatą.</p>";
+                      exit();
+                  }
+                  elseif ($signupCheck == "defaultine") {
+                      echo "<script> if (document.getElementById('ikelimas')) {
+                          document.getElementById('ikelimas').style.display = 'none';
+                    } </script>";
+                      echo "<h3 class='centre'>Jūs nepasirinkote nuotraukos todėl prekei priskirta standartinė nuotrauka.</h3>";
+                      exit();
+                  }
+        }
+ ?>
 
           </article>
 
