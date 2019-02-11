@@ -4,6 +4,8 @@
       include_once('includes\dbhinc.php');
       $pre_pavadinimas = (isset($_GET['prePavadinimas']) == true) ?  $_GET['prePavadinimas'] : '';
       $pre_kaina = (isset($_GET['aprašymas']) == true) ?  $_GET['aprašymas'] : '';
+      $pre_spalva = (isset($_GET['preSpalva']) == true) ?  $_GET['preSpalva'] : '';
+      $pre_dydis = (isset($_GET['preDydis']) == true) ?  $_GET['preDydis'] : '';
 
 
           $object = new Dbh;
@@ -26,6 +28,10 @@
                     </select><br />
                   <label>Prekės pavadinimas</label><br />
                       <input id="prePavadinimas" type="text" title="" name="prePavadinimas" value="<?php echo $pre_pavadinimas; ?>" autocomplete="on"><br />
+                  <label>Spalva neprivalomas</label><br />
+                      <input id="preSpalva" type="text" title="" name="preSpalva" value="<?php echo $pre_spalva; ?>" autocomplete="on"><br />
+                  <label>Dydis neprivalomas</label><br />
+                      <input id="preDydis" type="text" title="" name="preDydis" value="<?php echo $pre_dydis; ?>" autocomplete="on"><br />
                   <label>Prekės kaina</label><br />
                       <input id="preKaina" type="number" title="" name="preKaina" value="<?php echo $pre_kaina; ?>"><br />
                   <label>Prekės nuotrauka</label><br />

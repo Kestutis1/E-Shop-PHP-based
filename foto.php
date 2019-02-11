@@ -47,10 +47,31 @@
                   VALUES (NULL, '$katId', '$prePavadinimas', '$preKaina', '$preAprašymas');";
           $ikeliam = mysqli_query(getPrisijungimas(), $SQL);
 
-      // IDEA: Susigražinam prekės id kurį panaudosim nuotraukos pavadinime.
+      // IDEA: Susigražinam prekės id kurį panaudosim nuotraukos pavadinime bei spalvai ir dydžiui.
           $last_id = mysqli_insert_id(getPrisijungimas());
 
-          // IDEA: Jaigu administratorius neįkėlė prekei nuotraukos pradedam defaultinės nuotraukos kelio įkėlimą į duombazę.
+      // IDEA: Jaigu administratorius nurodė įkeliam prekės splavą.
+          if(isset($_POST['preSpalva'])) {
+
+            $spalva = $_POST['preSpalva'];
+
+            $SQL_spalva = "INSERT INTO `prekiu_spalvos` ( `prekės_id`, `prekės_spalva`)
+                          VALUES('$last_id', '$spalva');";
+            $ikeliamSpalva = mysqli_query(getPrisijungimas(), $SQL_spalva);
+          }
+
+      // IDEA: Jaigu administratorius nurodė įkeliam prekės dydį.
+          if(isset($_POST['preDydis'])) {
+
+            $dydis = $_POST['preDydis'];
+
+            $SQL_dydis = "INSERT INTO `prekiu_dydis` ( `prekės_id`, `prekės_dydis`)
+                          VALUES('$last_id', '$dydis');";
+            $ikeliamDydi = mysqli_query(getPrisijungimas(), $SQL_dydis);
+          }
+
+
+      // IDEA: Jaigu administratorius neįkėlė prekei nuotraukos pradedam defaultinės nuotraukos kelio įkėlimą į duombazę.
                       if (empty($nuotraukaPavadinimas)) {
                         $SQL_foto = "INSERT INTO `prekiu_nuotr` ( `prekės_id`, `status`)
                                       VALUES('$last_id', 0);";

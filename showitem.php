@@ -3,6 +3,7 @@ include('db.php');
 
 $display_block = "<h1>Prekės aprašymas</h1>";
 
+
 $get_items_sql = "SELECT c.id as kat_id, c.kat_pavadinimas, si.prekės_pavadinimas,
                     si.prekės_kaina, si.prekės_aprašymas FROM prekes
                     AS si LEFT JOIN prekiu_kategorijos AS c on c.id = si.kat_id
@@ -20,7 +21,6 @@ if(mysqli_num_rows($get_item_res) < 1) {
         $item_title = stripslashes($item_info['prekės_pavadinimas']);
         $item_price = $item_info['prekės_kaina'];
         $item_desc = stripslashes($item_info['prekės_aprašymas']);
-        // $item_image = "img\prekė".$_GET['item_id'].".jpg";
         $prekesId = $_GET['item_id'];
     }
 
@@ -44,13 +44,33 @@ $display_block .= "<p><strong>Prekė priklauso kategorijai
     <img src= $item_image>
     <p><strong>Prekės aprašymas:</strong><br />".
     $item_desc."</p>
-    <p><strong>Kaina:</strong> €".$item_price."</p>";
+    <p><strong>Kaina:</strong> €".$item_price."</p>
+
+    <form method=\"post\" action=\"addtocart.php\">";
 
 
 // IDEA: Atlaisvinam rezultatus.
   mysqli_free_result($get_item_res);
 
+// IDEA: Spalvų gavimas.
+    $get_colors_sql = "SELECT prekės_spalva FROM prekiu_spalvos WHERE
+                    prekės_id = '$prekesId' ORDER BY prekės_spalva";
+    $get_colors_res = mysqli_query(getPrisijungimas(), $get_colors_sql)
+                                 or die(mysqli_error(getPrisijungimas()));
 
+// IDEA: Jai radom spalvu
+    if (mysqli_num_rows($get_colors_res) > 0) {
+        $display_block .= "<p>Galimos spalvos:<br />
+        <select name=\"sel_itemcolor\">";
+
+        while($colors = mysqli_fetch_array($get_colors_res)) {
+            $prekėsSpalva = $colors['prekės_spalva'];
+            $display_block .= "<option value=\" ".$prekėsSpalva."\">".
+            $prekėsSpalva."</option>";
+
+        }
+        $display_block .= "</select></p>";
+    }
 }
 
 // IDEA: Prasideda skripto išvedimas į ekraną.
@@ -59,5 +79,6 @@ include('header.php');
           <div class = 'preke'><div class = 'centre'>
           $display_block</div></div></div>
           </article></section>";
-include('footer.php');
-?>
+
+    include('footer.php');
+ ?>
