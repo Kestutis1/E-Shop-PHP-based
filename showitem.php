@@ -45,9 +45,7 @@ $display_block .= "<p><strong>Prekė priklauso kategorijai
     <p><strong>Prekės aprašymas:</strong><br />".
     $item_desc."</p>
     <p><strong>Kaina:</strong> €".$item_price."</p>
-
-    <form method=\"post\" action=\"addtocart.php\">";
-
+    <form class=\"atvaizduoti\" method=\"post\" action=\"pridėtYkrepšelį.php\">";
 
 // IDEA: Atlaisvinam rezultatus.
   mysqli_free_result($get_item_res);
@@ -60,8 +58,8 @@ $display_block .= "<p><strong>Prekė priklauso kategorijai
 
 // IDEA: Jai radom spalvu
     if (mysqli_num_rows($get_colors_res) > 0) {
-        $display_block .= "<p>Galimos spalvos:<br />
-        <select name=\"sel_itemcolor\">";
+        $display_block .= "<p>Galimos spalvos:</p>
+        <select name=\"sel_item_color\">";
 
         while($colors = mysqli_fetch_array($get_colors_res)) {
             $prekėsSpalva = $colors['prekės_spalva'];
@@ -70,8 +68,49 @@ $display_block .= "<p><strong>Prekė priklauso kategorijai
 
         }
         $display_block .= "</select></p>";
+
     }
+// IDEA: Atlaisvinam rezultatus.
+  mysqli_free_result($get_colors_res);
+
+// IDEA: Dydžių gavimas.
+    $get_size_sql = "SELECT prekės_dydis FROM prekiu_dydis WHERE
+                    prekės_id = '$prekesId' ORDER BY prekės_dydis";
+    $get_size_res = mysqli_query(getPrisijungimas(), $get_size_sql)
+                             or die(mysqli_error(getPrisijungimas()));
+
+// IDEA: Jai radom dydžių
+    if (mysqli_num_rows($get_size_res) > 0) {
+        $display_block .= "<p>Galimi dydžai:</p>
+        <select name=\"sel_item_size\">";
+
+        while($sizes = mysqli_fetch_array($get_size_res)) {
+            $prekėsDydis = $sizes['prekės_dydis'];
+            $display_block .= "<option value=\" ".$prekėsDydis."\">".
+            $prekėsDydis."</option>";
+
+        }
+          $display_block .= "</select></p>";
+    }
+
+    mysqli_free_result($get_size_res);
+
+    $display_block .="
+    <p>Pasirinkite kiekį.</p>
+    <select name=\"sel_item_qty\">";
+
+    for ($i=1; $i<11 ; $i++) {
+        $display_block .="<option value=\" ".$i."\">".$i."</option>";
+    }
+
+    $display_block .="</select>
+    <input type=\"hidden\" name=\"sel_item_id\"
+    value=\" ".$_GET['item_id']."\"/><br /><br />
+    <input class=\"uzsakyti\" type=\"submit\" value=\"Pridėti į krepšelį\"/>
+    </form>";
 }
+
+
 
 // IDEA: Prasideda skripto išvedimas į ekraną.
 include('header.php');

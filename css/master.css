@@ -110,8 +110,8 @@ margin-top: 15px;
 margin-bottom: 3px;
 }
 
-select {
-  width: 100%;
+form select {
+  width: 50%;
 }
 
 input {
@@ -134,6 +134,9 @@ input {
 }
 form .mygtukas {
   margin-left: 25%;
+}
+.uzsakyti {
+  width: 30%;
 }
 /*------- Tekstas---------------*/
 
