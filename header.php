@@ -18,8 +18,10 @@
           <ul>
             <li><a href="index.php">Pradžia</a></li>
             <li><a href="prekiu_valdymas.php">Įkelti prekes</a></li>
-            <li>Kontaktai</li>
+            <li><a href="kontaktai.php">Kontaktai</a></li>
+            <li class="prisijungimas"><a href="signup.php">Registruotis</a></li>
+            <li class="prisijungimas"><a href="login.php">Prisijungti</a></li>
           </ul>
         </nav>
-  </div>
+  </div class="flout_fix"></div>
 </header>

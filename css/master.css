@@ -1,9 +1,11 @@
 * {
     box-sizing: border-box;
 }
+
 .floatL {
      float: left;
 }
+
 .floatR {
      float: right;
 }
@@ -13,30 +15,39 @@
 .aukstis-100 {
     height: 100px;
 }
+
 .aukstis-200 {
     height: 200px;
 }
+
 .aukstis-300 {
     height: 300px;
 }
+
 .aukstis-400 {
     height: 400px;
 }
+
 .aukstis-500 {
     height: 500px;
 }
+
 .fonas-rud {
     background-color: brown;
 }
+
 .fonas-gelt {
     background-color: yellow;
 }
+
 .fonas-oran {
     background-color: orange;
 }
+
 .has_error {
   background-color: red;
 }
+
 .has_error::placeholder {
   color: white;
   opacity: 1; /* Firefox */
@@ -54,9 +65,11 @@
   margin-left: 15%;
   margin-right: 15%;
 }
+
 .preke {
   margin-left: 20%;
 }
+
 /* ------- */
 
 body {
@@ -76,6 +89,7 @@ img {
   width: 35%;
   height: auto;
 }
+
 aside {
   background-color: #5b68b3;
   text-align: center;
@@ -87,23 +101,37 @@ footer p {
     text-align: center;
     margin-top: 100px;
 }
+
 .flex-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .flex-container > div {
   align-content: center;
   width: 60%;
 }
+
 .flex-item {
   padding: 5px;
+}
+
+.flout_fix {
+  clear: both;
 }
 /*--------Formos---------------*/
 form {
   padding-bottom: 15px;
 }
+
+form button:hover {
+  cursor: pointer;
+  background-color: rgb(6, 46, 14);
+  color: rgb(218, 213, 235);
+}
+
 form label {
 display: inline-block;
 margin-top: 15px;
@@ -117,6 +145,7 @@ form select {
 input {
   width: 100%;
 }
+
 .paieska {
     background-color: #eeaf46;
     display: inline-block;
@@ -126,17 +155,25 @@ input {
     margin-bottom: 25px;
     margin-right: 20px;
 }
+
 .negerasInput {
   box-shadow: 0 0 5px 1px red;
 }
+
 .mygtukas {
   width: 50%;
 }
+
 form .mygtukas {
   margin-left: 25%;
 }
+
 .uzsakyti {
   width: 30%;
+}
+
+input, select {
+  vertical-align: middle;
 }
 /*------- Tekstas---------------*/
 
@@ -170,16 +207,23 @@ h1 {
 }
 /*------- Meniu---------------*/
 
+header {
+  width: 100%;
+}
+
 nav {
-  width: 60%;
   background-color: #a7bfb1;
   padding-left: 15%;
   margin-bottom: 10px;
 }
 
+nav ul .prisijungimas {
+  float: right;
+  margin-right: 20px;
+}
+
 ul {
   padding: 0;
-
 }
 
 li {
@@ -189,8 +233,14 @@ li {
   font-size: 26px;
   margin-top: 8px;
   margin-left: 12px;
-
 }
+li a:hover {
+  color: rgb(28, 27, 24);
+}
+a:hover {
+  color: rgb(28, 27, 24);
+}
+/*---------------- Medijos pagal ekrano dydžius -----------------*/
 @media only screen and (max-width: 500px) {
     li {
       font-size: 20px;
@@ -198,6 +248,7 @@ li {
     }
 
 }
+
 @media only screen and (max-width: 1023px) {
     nav {
       width: 100%;
@@ -206,6 +257,7 @@ li {
       margin-top: 0;
     }
 }
+
 @media only screen and (max-width: 800px) {
     ul {
         text-align: center;
