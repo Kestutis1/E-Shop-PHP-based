@@ -172,8 +172,15 @@ form .mygtukas {
   width: 30%;
 }
 
-input, select {
-  vertical-align: middle;
+.nav-login {
+  width: 130px;
+}
+
+.plotis {
+  width: 35%;
+}
+.plotis button {
+  margin-top: 15px;
 }
 /*------- Tekstas---------------*/
 

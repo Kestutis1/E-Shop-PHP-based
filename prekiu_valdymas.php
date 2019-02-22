@@ -19,7 +19,7 @@
 
     <article>
           <div class="flex-container">
-              <form class="" name="ikelimas" id="ikelimas" method="post" action="foto.php" enctype="multipart/form-data">
+              <form name="ikelimas" id="ikelimas" method="post" action="foto.php" enctype="multipart/form-data">
                 <label>Pasirinkti prekės kategoriją</label><br />
                     <select name="kategorija">
                       <option value="1">Marškinėliai</option>

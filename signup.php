@@ -3,21 +3,19 @@ include("db.php");
 include("header.php");
 ?>
 <section><article><div class = 'flex-container'>
-<h2>Užsiregistruoti</h2>
+<h1>Užsiregistruoti</h1>
 
-<div class="nav-login">
-  <form >
-    <input type="text" name="uid" placeholder="Vartotojo vardas arba e-paštas" value="">
+  <form class="plotis" action="sign_script.php" method="post">
+    <input type="text" name="first" placeholder="Vardas" value="">
+    <input type="text" name="last" placeholder="Pavardė" value="">
+    <input type="text" name="email" placeholder=" E-paštas" value="">
+    <input type="text" name="uid" placeholder="Vartotojo vardas" value="">
     <input type="password" name="pwd" placeholder="Slaptažodis" value="">
     <button type="submit" name="submit">Registruotis</button>
   </form>
-</div>
-
-<a href="signup.php">Registruotis</a>
 
 </section></article></div>
 
-
 <?php
 include("footer.php");
- ?>
+?>
