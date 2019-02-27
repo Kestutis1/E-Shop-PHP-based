@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
              exit();
           } else {
               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                  header("Location:, signup.php?signup=email");
+                  header("Location: signup.php?signup=email");
                   exit();
               } else {
                   $sql = "SELECT * FROM users WHERE user_uid='$uid'";
