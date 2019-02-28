@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
                        VALUES ('$first', '$last', '$email', '$uid', '$hashedPwd');";
 
                        mysqli_query(getPrisijungimas(), $sql);
-                       header("Location: signup.php?signup=succes");
+                       header("Location: index.php?signup=succes");
                        exit();
                   }
               }

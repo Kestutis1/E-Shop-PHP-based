@@ -5,7 +5,7 @@ include("header.php");
 <section><article><div class = 'flex-container'>
 <h1>Užsiregistruoti</h1>
 
-  <form class="plotis" action="sign_script.php" method="post">
+  <form class="plotis" action="<?php echo htmlspecialchars('sign_script.php');?>" method="post">
     <input type="text" name="first" placeholder="Vardas" value="">
     <input type="text" name="last" placeholder="Pavardė" value="">
     <input type="text" name="email" placeholder=" E-paštas" value="">
