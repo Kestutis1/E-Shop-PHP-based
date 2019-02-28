@@ -20,8 +20,20 @@
             <li><a href="index.php">Pradžia</a></li>
             <li><a href="prekiu_valdymas.php">Įkelti prekes</a></li>
             <li><a href="kontaktai.php">Kontaktai</a></li>
-            <li class="prisijungimas"><a href="signup.php">Registruotis</a></li>
-            <li class="prisijungimas"><a href="login.php">Prisijungti</a></li>
+
+            <?php
+            // IDEA: Pasirašau skriptą jaigu vartotojas neprisijungęs.
+             $login = "<li class='prisijungimas'><a href='signup.php'>Registruotis</a></li>
+                      <li class='prisijungimas'><a href='login.php'>Prisijungti</a></li>";
+
+            // IDEA: Jaigu prisijungęs atspausdinam vartotojo vardą ir statusą, kad prisijungęs.
+            if (isset($_SESSION['u_id'])) {
+               $vardas = $_SESSION['u_uid'];
+               $login = "<li class='prisijungimas'>Prisijugęs</li><li class='prisijungimas'>$vardas</li>";
+            }
+
+            echo "$login"; ?>
+            
           </ul>
         </nav>
   </div class="flout_fix"></div>
