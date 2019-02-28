@@ -29,11 +29,12 @@
             // IDEA: Jaigu prisijungęs atspausdinam vartotojo vardą ir statusą, kad prisijungęs.
             if (isset($_SESSION['u_id'])) {
                $vardas = $_SESSION['u_uid'];
-               $login = "<li class='prisijungimas'>Prisijugęs</li><li class='prisijungimas'>$vardas</li>";
+               $login = "<li class='prisijungimas'><a href='logout.php?logout=logout'>Atsijungti</a></li>
+               <li class='prisijungimas'>Prisijugęs</li><li class='prisijungimas'>$vardas</li>";
             }
 
             echo "$login"; ?>
-            
+
           </ul>
         </nav>
   </div class="flout_fix"></div>

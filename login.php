@@ -6,7 +6,7 @@ include("header.php");
 <h1>Prisijungimas</h1>
 
   <form class="plotis" action="<?php echo htmlspecialchars('login_script.php');?>" method="post">
-    <input type="text" name="uid" placeholder="Vartotojo vardas">
+    <input type="text" name="uid" placeholder="Vartotojo vardas arba e-paštas">
     <input type="password" name="pwd" placeholder="Slaptažodis">
     <button type="submit" name="submit">Prisijungti</button>
   </form>
