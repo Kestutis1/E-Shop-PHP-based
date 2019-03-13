@@ -1,0 +1,13 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+RewriteRule ^signup/([0-9]+)/([0-9a-zA-Z_-]+) signup.php?id=$1&name=$2 [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{REQUEST_FILENAME}\.php -f
+
+RewriteRule ^l/([0-9]+) l.php?id=$1 [NC,L]
