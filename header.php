@@ -18,8 +18,8 @@
       <nav>
           <ul>
             <li><a href="index.php">Pradžia</a></li>
-            <li><a href="prekiu_valdymas.php">Įkelti prekes</a></li>
-            <li><a href="kontaktai.php">Kontaktai</a></li>
+            <li><a href="prekiu_valdymas">Įkelti prekes</a></li>
+            <li><a href="kontaktai">Kontaktai</a></li>
 
             <?php
             // IDEA: Pasirašau skriptą jaigu vartotojas neprisijungęs.

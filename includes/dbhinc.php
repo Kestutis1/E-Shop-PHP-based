@@ -11,7 +11,7 @@ class Dbh
     public function connect() {
       $this->servername = "localhost";
       $this->username = "root";
-      $this->password = "root";
+      $this->password = "";
       $this->dbname = "parduotuve";
       $this->charset = "utf8mb4";
 
