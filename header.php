@@ -23,8 +23,8 @@
 
             <?php
             // IDEA: Pasirašau skriptą jaigu vartotojas neprisijungęs.
-             $login = "<li class='prisijungimas'><a href='signup.php'>Registruotis</a></li>
-                      <li class='prisijungimas'><a href='login.php'>Prisijungti</a></li>";
+             $login = "<li class='prisijungimas'><a href='signup'>Registruotis</a></li>
+                      <li class='prisijungimas'><a href='login'>Prisijungti</a></li>";
 
             // IDEA: Jaigu prisijungęs atspausdinam vartotojo vardą ir statusą, kad prisijungęs.
             if (isset($_SESSION['u_id'])) {

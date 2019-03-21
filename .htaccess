@@ -1,6 +1,7 @@
 RewriteEngine  on
 
 RewriteCond %{REQUEST_FILENAME} !-f
+
 RewriteCond %{REQUEST_FILENAME} !-d
 
 RewriteCond %{REQUEST_URI} !\.php$ [NC]
@@ -13,13 +14,6 @@ RewriteRule ^kontaktai$ kontaktai.php [L]
 
 RewriteRule ^Parduotuve$ index.php [L]
 
-RewriteRule ^signup/index.php$ index.php
+RewriteRule ^signup$ signup.php [L]
 
-RewriteRule ^signup/Parduotuve$ index.php
-
-RewriteRule ^signup/prekiu_valdymas$ prekiu_valdymas.php
-
-RewriteRule ^signup/kontaktai$ kontaktai.php
-
-
-RewriteRule ^signup/([0-9a-zA-Z_-]+) signup.php?sign=$1
+RewriteRule ^login$ login.php [L]
