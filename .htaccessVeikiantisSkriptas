@@ -1,2 +1,0 @@
-RewriteEngine on
-RewriteRule ^l/([0-9]+) l.php?id=$1

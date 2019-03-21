@@ -10,14 +10,14 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
         <link rel="stylesheet" href="http://localhost/E-Shop-PHP-based/css/normalize.css">
-        <link rel="stylesheet" href="http://localhost/E-Shop-PHP-based/css/master.css?ver=1.0">
+        <link rel="stylesheet" href="http://localhost/E-Shop-PHP-based/css/master.css">
     </head>
   <body>
 <header>
   <div class="virsus">
       <nav>
           <ul>
-            <li><a href="index.php">Pradžia</a></li>
+            <li><a href="Parduotuve">Pradžia</a></li>
             <li><a href="prekiu_valdymas">Įkelti prekes</a></li>
             <li><a href="kontaktai">Kontaktai</a></li>
 

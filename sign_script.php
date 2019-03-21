@@ -9,16 +9,17 @@ if (isset($_POST['submit'])) {
 
       // IDEA: Errorų tvarkymas jai tokių randam.
       if (empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd)) {
-          header("Location: signup.php?signup=empty");
+          header("Location: signup/empty");
+          // header("Location: signup.php?signup=empty");
           exit();
      } else {
        // IDEA: Tikrinam leistinus simbolius Vardui ir Pavardei. Leidžiam tik LT raides.
            if (!preg_match("/^[-\pL&]+$/u", $first) || !preg_match("/^[-\pL&]+$/u", $last)) {
-            header("Location: signup.php?signup=invalid");
+            header("Location: signup/invalid");
              exit();
           } else {
               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                  header("Location: signup.php?signup=email");
+                  header("Location: signup/email");
                   exit();
               } else {
                   $sql = "SELECT * FROM users WHERE user_uid='$uid'";
@@ -26,7 +27,7 @@ if (isset($_POST['submit'])) {
                   $resultCheck = mysqli_num_rows($result);
 
                   if ($resultCheck > 0) {
-                      header("Location: signup.php?signup=usertaken");
+                      header("Location: signup/usertaken");
                   } else {
                     // IDEA: Užkoduojam slaptažodį.
                       $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
@@ -44,6 +45,6 @@ if (isset($_POST['submit'])) {
        }
 
 } else {
-  header("Location: signup.php");
+  header("Location: signup");
   exit();
 }

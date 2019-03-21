@@ -9,8 +9,8 @@ $pwd = (isset($_POST['pwd']) == true) ?  $_POST['pwd'] : '';
 $uid = (isset($_POST['uid']) == true) ?  $_POST['uid'] : '';
 
 // IDEA: Jeigu iš skripto grįžo error arba jaigu sekmė.
-  if (isset($_GET['signup'])) {
-    switch ($_GET['signup']) {
+  if (isset($_GET['sign'])) {
+    switch ($_GET['sign']) {
       case 'empty':
           $signup = "Jūs užpildėte nevisus laukus !";
         break;

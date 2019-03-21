@@ -1,8 +1,25 @@
-# Turn on the rewrite engine
 RewriteEngine  on
-# If the request doesn't end in .php (Case insensitive) continue processing rules
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
 RewriteCond %{REQUEST_URI} !\.php$ [NC]
-# If the request doesn't end in a slash continue processing the rules
+
 RewriteCond %{REQUEST_URI} [^/]$
-# Rewrite the request with a .php extension. L means this is the 'Last' rule
-RewriteRule ^(.*)$ $1.php [L]
+
+RewriteRule ^prekiu_valdymas$ prekiu_valdymas.php [L]
+
+RewriteRule ^kontaktai$ kontaktai.php [L]
+
+RewriteRule ^Parduotuve$ index.php [L]
+
+RewriteRule ^signup/index.php$ index.php
+
+RewriteRule ^signup/Parduotuve$ index.php
+
+RewriteRule ^signup/prekiu_valdymas$ prekiu_valdymas.php
+
+RewriteRule ^signup/kontaktai$ kontaktai.php
+
+
+RewriteRule ^signup/([0-9a-zA-Z_-]+) signup.php?sign=$1
