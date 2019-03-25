@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
       // IDEA: Errorų tvarkymas jai tokių randam.
       if (empty($first) || empty($last) || empty($email) || empty($uid) || empty($pwd)) {
           $signup = "empty";
-          // header("Location: signup.php?signup=empty");
+
      } else {
        // IDEA: Tikrinam leistinus simbolius Vardui ir Pavardei. Leidžiam tik LT raides.
            if (!preg_match("/^[-\pL&]+$/u", $first) || !preg_match("/^[-\pL&]+$/u", $last)) {
@@ -82,7 +82,7 @@ $uid = (isset($_POST['uid']) == true) ?  $_POST['uid'] : '';
 <h1>Užsiregistruoti</h1>
 <?php echo "$signup"; ?>
 
-  <form class="plotis" action="" method="post">
+  <form class="plotis" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
     <input type="text" name="first" placeholder="Vardas" value="<?php echo $first; ?>">
     <input type="text" name="last" placeholder="Pavardė" value="<?php echo $last; ?>">
     <input type="text" name="email" placeholder=" E-paštas" value="<?php echo $email; ?>">
