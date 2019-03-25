@@ -2,6 +2,13 @@
       include('header.php');
       // include('db.php');
       include_once('includes\dbhinc.php');
+
+      // IDEA: Pasitikrinam ar užėjo administrartorius jai ne siunčiam į index.php
+      if ($_SESSION['u_uid'] != "Administratorius") {
+            header("Location: index.php");
+            exit();
+        }
+
       $pre_pavadinimas = (isset($_GET['prePavadinimas']) == true) ?  $_GET['prePavadinimas'] : '';
       $pre_kaina = (isset($_GET['aprašymas']) == true) ?  $_GET['aprašymas'] : '';
       $pre_spalva = (isset($_GET['preSpalva']) == true) ?  $_GET['preSpalva'] : '';

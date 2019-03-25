@@ -25,6 +25,10 @@ if (isset($_POST['submit'])) {
           } else {
               if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                   $signup = "email";
+                } else {
+                  if ($uid == "Administratorius") {
+                    $signup = "negalimaAdmin";
+
               } else {
                   $sql = "SELECT * FROM users WHERE user_uid='$uid'";
                   $result = mysqli_query(getPrisijungimas(), $sql);
@@ -48,13 +52,13 @@ if (isset($_POST['submit'])) {
           }
        }
     }
-
+}
 // IDEA: Jaigu grįžtam pildyti formą tai formai išsisaugom vestas reikšmes.
 $first = (isset($_POST['first']) == true) ?  $_POST['first'] : '';
 $last = (isset($_POST['last']) == true) ?  $_POST['last'] : '';
 $email = (isset($_POST['email']) == true) ?  $_POST['email'] : '';
 $pwd = (isset($_POST['pwd']) == true) ?  $_POST['pwd'] : '';
-$uid = (isset($_POST['uid']) == true) ?  $_POST['uid'] : '';
+$uid = (isset($_POST['uid']) == true) ? $_POST['uid'] : '';
 
 // IDEA: Jeigu iš skripto grįžo error arba jaigu sekmė.
     switch ($signup) {
@@ -66,6 +70,9 @@ $uid = (isset($_POST['uid']) == true) ?  $_POST['uid'] : '';
         break;
       case 'email':
           $signup = "Tokio elektroninio pašto adreso nėra !";
+        break;
+      case 'negalimaAdmin':
+          $signup = "Jūs negalite pasirinkti vartotojo vardo ".$uid."!";
         break;
       case 'usertaken':
           $signup = "Toks vartotojo vardas jau užimtas !";
@@ -86,8 +93,8 @@ $uid = (isset($_POST['uid']) == true) ?  $_POST['uid'] : '';
     <input type="text" name="first" placeholder="Vardas" value="<?php echo $first; ?>">
     <input type="text" name="last" placeholder="Pavardė" value="<?php echo $last; ?>">
     <input type="text" name="email" placeholder=" E-paštas" value="<?php echo $email; ?>">
-    <input type="text" name="uid" placeholder="Vartotojo vardas" value="<?php echo $pwd; ?>">
-    <input type="password" name="pwd" placeholder="Slaptažodis" value="<?php echo $uid; ?>">
+    <input type="text" name="uid" placeholder="Vartotojo vardas" value="<?php echo $uid; ?>">
+    <input type="password" name="pwd" placeholder="Slaptažodis" value="<?php echo $pwd; ?>">
     <button type="submit" name="submit">Registruotis</button>
   </form>
 

@@ -17,3 +17,5 @@ RewriteRule ^Parduotuve$ index.php [L]
 RewriteRule ^signup$ signup.php [L]
 
 RewriteRule ^login$ login.php [L]
+
+RewriteRule ^atsiliepimai$ atsiliepimai.php [L]

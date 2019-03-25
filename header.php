@@ -18,7 +18,7 @@
       <nav>
           <ul>
             <li><a href="Parduotuve">Pradžia</a></li>
-            <li><a href="prekiu_valdymas">Įkelti prekes</a></li>
+            <li><a href="atsiliepimai">Pirkėjų atsiliepimai</a></li>
             <li><a href="kontaktai">Kontaktai</a></li>
 
             <?php
