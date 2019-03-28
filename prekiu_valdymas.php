@@ -1,7 +1,5 @@
 <?php
       include('header.php');
-      // include('db.php');
-      include_once('includes\dbhinc.php');
 
       // IDEA: Pasitikrinam ar užėjo administrartorius jai ne siunčiam į index.php
       if ($_SESSION['u_uid'] != "Administratorius") {
@@ -13,11 +11,6 @@
       $pre_kaina = (isset($_GET['aprašymas']) == true) ?  $_GET['aprašymas'] : '';
       $pre_spalva = (isset($_GET['preSpalva']) == true) ?  $_GET['preSpalva'] : '';
       $pre_dydis = (isset($_GET['preDydis']) == true) ?  $_GET['preDydis'] : '';
-
-
-          $object = new Dbh;
-          $object->connect();
-
 
 ?>
 
