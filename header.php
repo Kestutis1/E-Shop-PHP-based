@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Staatliches" rel="stylesheet">
         <link rel="stylesheet" href="http://localhost/E-Shop-PHP-based/css/normalize.css">
         <link rel="stylesheet" href="http://localhost/E-Shop-PHP-based/css/master.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
   <body>
 <header>
@@ -23,7 +24,8 @@
 
             <?php
             // IDEA: Pasirašau skriptą jaigu vartotojas neprisijungęs.
-             $login = "<li class='prisijungimas'><a href='signup'>Registruotis</a></li>
+             $login = "<li class='prisijungimas material-icons'><a href='krepselis.php'>add_shopping_cart</a></li>
+                      <li class='prisijungimas'><a href='signup'>Registruotis</a></li>
                       <li class='prisijungimas'><a href='login'>Prisijungti</a></li>";
 
             // IDEA: Jaigu prisijungęs atspausdinam vartotojo vardą ir statusą, kad prisijungęs.
@@ -33,7 +35,7 @@
                <li class='prisijungimas'>Prisijugęs</li><li class='prisijungimas'>$vardas</li>";
             }
 
-            echo "$login"; ?>
+            echo $login; ?>
 
           </ul>
         </nav>

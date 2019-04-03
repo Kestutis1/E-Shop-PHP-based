@@ -8,6 +8,8 @@ include("header.php");
     if (isset($_GET['login'])) {
        if ($_GET['login'] == "error") {
          $login = "<h3>Jums nepavyko prisijungti.</h3>";
+       } elseif ($_GET['login'] =="empty") {
+         $login = "<h3>Jūs neužpildėte prisijungimo laukų !</h3>";
        }
     } else {
       $login = "";

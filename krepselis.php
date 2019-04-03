@@ -1,6 +1,5 @@
 <?php
 include("db.php");
-session_start();
 $seans = $_COOKIE["PHPSESSID"];
 $display_block = "<h3 class='centre'>Jūsų prekių krepšelis.</h3>";
 
@@ -36,6 +35,7 @@ if(mysqli_num_rows($get_cart_res) <1) {
       $pavadinimas = $krepselis['prekės_pavadinimas'];
       $kaina = $krepselis['prekės_kaina'];
       $kiekis = $krepselis['sel_item_qty'];
+      $_SESSION["krepselis"] = $kiekis;
       $spalva = $krepselis['sel_item_color'];
       $dydis = $krepselis['sel_item_size'];
       $kainu_suma = sprintf("%.02f", $kaina*$kiekis);

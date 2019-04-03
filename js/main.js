@@ -74,6 +74,8 @@ function removeParam(key, sourceURL) {
 var originalURL = window.location.href;
 var alteredURL = removeParam("signup", originalURL);
 var alteredURL = removeParam("mailsend", originalURL);
+var alteredURL = removeParam("login", originalURL);
+var alteredURL = removeParam("sekme", originalURL);
 // The var alteredURL will be the output you desire.
 console.log(originalURL);
 console.log(alteredURL);

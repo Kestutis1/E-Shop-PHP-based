@@ -1,6 +1,5 @@
 <?php
       include('header.php');
-
       // IDEA: Pasitikrinam ar užėjo administrartorius jai ne siunčiam į index.php
       if ($_SESSION['u_uid'] != "Administratorius") {
             header("Location: index.php");
@@ -19,6 +18,60 @@
 
     <article>
           <div class="flex-container">
+
+<?php   // IDEA: Pradedu errorų arba sekmės validacijos pranešimus grįžtančius iš skripto failo.
+
+         if (isset($_GET['sekme'])) {
+                      $signupCheck = $_GET['sekme'];
+
+                      if ($signupCheck == "ikelta") {
+                          echo "<script> if (document.getElementById('ikelimas')) {
+                                document.getElementById('ikelimas').style.display = 'none';
+                          } </script>";
+                          $message = "<h3 class='centre'>Jūsų prekė sėkmingai įkelta.</h3>";
+                          exit();
+                      }
+                      elseif ($signupCheck == "dydis") {
+                          echo "<p class='centre'>Jūsų nuotrauką užima perdaug vietos.</p>";
+
+                      }
+                      elseif ($signupCheck == "dydis") {
+                          echo "<p class='centre'>Jūsų nuotrauką užima perdaug vietos. Ji turi būti nedidesnė 1000000 baitų.</p>";
+
+                      }
+                      elseif ($signupCheck == "error") {
+                            echo "<p class='centre'>Įvyko error ikeliant jūsų nuotrauką.</p>";
+
+                      }
+                      elseif ($signupCheck == "netinkamas") {
+                          echo "<p class='centre'>Jūsų pasirinkta nuotrauka yra netinkamo formato. Pasirinkite jpg, jpeg, png, aba pdf formatą.</p>";
+
+                      }
+                      elseif ($signupCheck == "emptyKatid") {
+                          echo "<p class='centre'>Jūs nepasirinkote prekės kategorijos.</p>";
+
+                      }
+                      elseif ($signupCheck == "emptyPavadinimas") {
+                          echo "<p class='centre'>Jūs neįrašėte prekės pavadinimo.</p>";
+
+                      }
+                      elseif ($signupCheck == "emptyKaina") {
+                          echo "<p class='centre'>Jūs neįrašėte prekės kainos.</p>";
+
+                      }
+                      elseif ($signupCheck == "emptyAprašymas") {
+                          echo "<p class='centre'>Jūs neįrašėte prekės aprašymo.</p>";
+
+                      }
+                      elseif ($signupCheck == "defaultine") {
+                          echo "<script> if (document.getElementById('ikelimas')) {
+                              document.getElementById('ikelimas').style.display = 'none';
+                        } </script>";
+                          echo "<h3 class='centre'>Jūs nepasirinkote nuotraukos todėl prekei priskirta standartinė nuotrauka.</h3>";
+                          exit();
+                      }
+            }
+     ?>
               <form name="ikelimas" id="ikelimas" method="post" action="foto.php" enctype="multipart/form-data">
                 <label>Pasirinkti prekės kategoriją</label><br />
                     <select name="kategorija">
@@ -43,43 +96,7 @@
               </form>
             </div>
 
-<?php
-        if (!isset($_GET['sekme'])) {
-              exit();
-        } else {
-                  $signupCheck = $_GET['sekme'];
-                  if ($signupCheck == "ikelta") {
-                      echo "<script> if (document.getElementById('ikelimas')) {
-                            document.getElementById('ikelimas').style.display = 'none';
-                      } </script>";
-                      echo "<h3 class='centre'>Jūsų prekė sėkmingai įkelta.</h3>";
-                      exit();
-                  }
-                  elseif ($signupCheck == "dydis") {
-                      echo "<p class='centre'>Jūsų nuotrauką užima perdaug vietos.</p>";
-                      exit();
-                  }
-                  elseif ($signupCheck == "dydis") {
-                      echo "<p class='centre'>Jūsų nuotrauką užima perdaug vietos. Ji turi būti nedidesnė 1000000 baitų.</p>";
-                      exit();
-                  }
-                  elseif ($signupCheck == "error") {
-                        echo "<p class='centre'>Įvyko error ikeliant jūsų nuotrauką.</p>";
-                      exit();
-                  }
-                  elseif ($signupCheck == "netinkamas") {
-                      echo "<p class='centre'>Jūsų pasirinkta nuotrauka yra netinkamo formato. Pasirinkite jpg, jpeg, png, aba pdf formatą.</p>";
-                      exit();
-                  }
-                  elseif ($signupCheck == "defaultine") {
-                      echo "<script> if (document.getElementById('ikelimas')) {
-                          document.getElementById('ikelimas').style.display = 'none';
-                    } </script>";
-                      echo "<h3 class='centre'>Jūs nepasirinkote nuotraukos todėl prekei priskirta standartinė nuotrauka.</h3>";
-                      exit();
-                  }
-        }
- ?>
+
 
           </article>
 

@@ -24,6 +24,25 @@
             $prePavadinimas = mysqli_real_escape_string(getPrisijungimas(), $_POST['prePavadinimas']);
             $preKaina = mysqli_real_escape_string(getPrisijungimas(), $_POST['preKaina']);
             $preAprašymas = mysqli_real_escape_string(getPrisijungimas(), $_POST['aprašymas']);
+
+      // IDEA: Psitikrinu prekės informacijos kintamuosiuis ar jie užpildyti jai ne siunčiu atgal.
+      if (empty($katId)) {
+            header("location: prekiu_valdymas.php?sekme=emptyKatid");
+            exit();
+      }
+      if(empty($prePavadinimas)) {
+            header("location: prekiu_valdymas.php?sekme=emptyPavadinimas");
+            exit();
+      }
+      if(empty($preKaina)) {
+            header("location: prekiu_valdymas.php?sekme=emptyKaina");
+            exit();
+      }
+      if(empty($preAprašymas)) {
+            header("location: prekiu_valdymas.php?sekme=emptyAprašymas");
+            exit();
+      }
+
       // IDEA: Prasideda įkeltos nuotraukos kintamieji.
             $nuotrauka = $_FILES['nuotrauka'];
             $nuotraukaPavadinimas = $_FILES ['nuotrauka'] ['name'];

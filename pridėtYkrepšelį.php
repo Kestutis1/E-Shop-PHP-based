@@ -35,13 +35,13 @@ if (isset($_POST['sel_item_id'])) {
 
         // IDEA: Nukreipiam į krepšelio puslapį.
         header("Location: krepselis.php");
-        exit;
+        exit();
         }
 
     } else {
        // IDEA: Jai kažkas negerai gražinam į pradinį puslapį.
        header("Location: index.php");
-       exit;
+       exit();
     }
 
 include ("footer.php");
