@@ -22,11 +22,25 @@
             <li><a href="atsiliepimai">Pirkėjų atsiliepimai</a></li>
             <li><a href="kontaktai">Kontaktai</a></li>
 
-            <?php
+        <?php
+            $kiekis = 0;
+
             // IDEA: Pasirašau skriptą jaigu vartotojas neprisijungęs.
-             $login = "<li class='prisijungimas material-icons'><a href='krepselis.php'>add_shopping_cart</a></li>
-                      <li class='prisijungimas'><a href='signup'>Registruotis</a></li>
-                      <li class='prisijungimas'><a href='login'>Prisijungti</a></li>";
+
+            $login = "<li class='floatR material-icons'><a href='krepselis.php'>add_shopping_cart</a></li>
+                    <li class='prisijungimas'><a href='signup'>Registruotis</a></li>
+                    <li class='prisijungimas'><a href='login'>Prisijungti</a></li>";
+
+
+            if(isset($_SESSION['kiekis'])) {
+                $kiekis = $_SESSION['kiekis'];
+                if ($kiekis > 0) {
+                  $login = "<li class='prisijungimas kiekis'><a href='krepselis.php'>$kiekis</a></li>
+                           <li class='floatR material-icons'><a href='krepselis.php'>add_shopping_cart</a></li>
+                           <li class='prisijungimas'><a href='signup'>Registruotis</a></li>
+                           <li class='prisijungimas'><a href='login'>Prisijungti</a></li>";
+                }
+              }
 
             // IDEA: Jaigu prisijungęs atspausdinam vartotojo vardą ir statusą, kad prisijungęs.
             if (isset($_SESSION['u_id'])) {

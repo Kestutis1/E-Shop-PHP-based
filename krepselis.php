@@ -2,6 +2,8 @@
 include("db.php");
 $seans = $_COOKIE["PHPSESSID"];
 $display_block = "<h3 class='centre'>Jūsų prekių krepšelis.</h3>";
+$bendra_suma = 0;
+$bendras_kiekis = 0;
 
 // IDEA: Susirandam pirkėjo pirkinius iš duombazės pagal seanso id.
 $get_cart_sql = "SELECT st.id, si.prekės_pavadinimas, si.prekės_kaina,
@@ -39,6 +41,8 @@ if(mysqli_num_rows($get_cart_res) <1) {
       $spalva = $krepselis['sel_item_color'];
       $dydis = $krepselis['sel_item_size'];
       $kainu_suma = sprintf("%.02f", $kaina*$kiekis);
+      $bendra_suma += $kainu_suma;
+      $bendras_kiekis += $kiekis;
 
     $display_block .= "
     <tr>
@@ -58,10 +62,11 @@ $display_block .= "</table>";
 // IDEA: Pradedam informacijos švedimą į ekraną.
 
 include("header.php");
-
+$_SESSION['kiekis'] = $bendras_kiekis;
+$iki = $_SESSION['kiekis'];
 echo "<section><article><div class = 'flex-container'>
       <div><div class = 'centre'>
-      $display_block</div></div></div></article></section>";
+      $display_block</div></div><br />$bendra_suma<br /></div></article></section>";
 
 include("footer.php");
  ?>
