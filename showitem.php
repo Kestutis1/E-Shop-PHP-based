@@ -106,7 +106,7 @@ $display_block .= "<p><strong>Prekė priklauso kategorijai
     $display_block .="</select>
     <input type=\"hidden\" name=\"sel_item_id\"
     value=\" ".$_GET['item_id']."\"/><br /><br />
-    <input class=\"uzsakyti\" type=\"submit\" value=\"Pridėti į krepšelį\"/>
+    <input class=\"uzsakyti\" type=\"submit\" value=\"Į krepšelį\"/>
     </form>";
 }
 

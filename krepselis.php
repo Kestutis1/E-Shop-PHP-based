@@ -1,9 +1,10 @@
 <?php
 include("db.php");
 $seans = $_COOKIE["PHPSESSID"];
-$display_block = "<h3 class='centre'>Jūsų prekių krepšelis.</h3>";
+$display_block = "<h3>Jūsų prekių krepšelis.</h3>";
 $bendra_suma = 0;
 $bendras_kiekis = 0;
+
 
 // IDEA: Susirandam pirkėjo pirkinius iš duombazės pagal seanso id.
 $get_cart_sql = "SELECT st.id, si.prekės_pavadinimas, si.prekės_kaina,
@@ -49,9 +50,9 @@ if(mysqli_num_rows($get_cart_res) <1) {
     <td align='center'>$pavadinimas<br /></td>
     <td align='center'>$dydis<br /></td>
     <td align='center'>$spalva<br /></td>
-    <td align='center'>$kaina<br /></td>
+    <td align='center'>$kaina €<br /></td>
     <td align='center'>$kiekis<br /></td>
-    <td align='center'>$kainu_suma<br /></td>
+    <td align='center'>$kainu_suma €<br /></td>
     <td align='center'><a href='pasalinti_krep.php?id=$id'>Pašalinti</a><br /></td>
     </tr>";
     }
@@ -66,7 +67,13 @@ $_SESSION['kiekis'] = $bendras_kiekis;
 $iki = $_SESSION['kiekis'];
 echo "<section><article><div class = 'flex-container'>
       <div><div class = 'centre'>
-      $display_block</div></div><br />$bendra_suma<br /></div></article></section>";
+      $display_block</div></div><br /><P>Bendra mikėtina suma $bendra_suma
+      €</P></div><form class='text_center' action='pristatyti.php' method='post'>
+          <button type='submit' name='submit'>Tęsti</button>
+      </form>
+    </section>
+  </article>";
+?>
 
-include("footer.php");
- ?>
+
+<?php include("footer.php"); ?>

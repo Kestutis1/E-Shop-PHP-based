@@ -66,6 +66,10 @@
   margin-right: 15%;
 }
 
+.text_center {
+  text-align: center;
+}
+
 .preke {
   margin-left: 20%;
 }
@@ -212,6 +216,7 @@ a:active {
 h1 {
   text-align: center;
 }
+
 /*------- Meniu---------------*/
 
 header {
