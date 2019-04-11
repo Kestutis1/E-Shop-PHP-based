@@ -14,6 +14,7 @@ if (isset($_POST['submit'])) {
     $adres = mysqli_real_escape_string(getPrisijungimas(), $_POST['adres']);
     $mail = mysqli_real_escape_string(getPrisijungimas(), $_POST['mail']);
     $zip = mysqli_real_escape_string(getPrisijungimas(), $_POST['zip']);
+    $authorization = $_COOKIE["PHPSESSID"];
 }
 
 // IDEA: Pradedu kintamūjų validaciją.
@@ -38,11 +39,11 @@ if (isset($_POST['submit'])) {
                             header("Location: pristatyti.php?pristatymas=email");
                             exit();
                       } else {
-                          if (strlen($name) >= 100) {
+                          if (strlen($name) > 100) {
                                 header("Location: pristatyti.php?pristatymas=name_length");
                                 exit();
                             } else {
-                               if (strlen($sur_name) >= 100) {
+                               if (strlen($sur_name) > 100) {
                                     header("Location: pristatyti.php?pristatymas=surname_length");
                                     exit();
                                } else {
@@ -50,59 +51,35 @@ if (isset($_POST['submit'])) {
                                         header("Location: pristatyti.php?pristatymas=tel_length");
                                         exit();
                                    } else {
-                                      if (strlen($adres) >= 500) {
+                                      if (strlen($adres) > 500) {
                                           header("Location: pristatyti.php?pristatymas=adres_length");
                                           exit();
                                       } else {
-                                          if (strlen($mail) >= 150) {
+                                          if (strlen($mail) > 150) {
                                               header("Location: pristatyti.php?pristatymas=mail_length");
                                               exit();
                                           } else {
                                               if (strlen($zip) > 5) {
                                                   header("Location: pristatyti.php?pristatymas=zip_length");
                                                   exit();
-                                              }
-                                          }
-                                      }
-                                   }
-                               }
+                                              } else {
+                                                  $sql = "INSERT INTO užsakymo_info (order_name, order_surname, order_addres, order_zip, order_tel, order_email, status, order_date)
+                                                  VALUES('$name', '$sur_name', '$adres', '$zip', '$telefonas', '$mail', ' ', now())";
+
+                                                  $res = mysqli_query(getPrisijungimas(), $sql)
+                                                          or die(mysqli_error(getPrisijungimas()));
+
+                                                          echo "<a href='#'>Testi</a>";
+                                    }
+                                  }
+                                }
+                              }
                             }
                           }
+                        }
                       }
+                   }
+                 }
+               }
 
-              }
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- ?>
+?>

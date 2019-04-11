@@ -5,11 +5,56 @@ include("db.php");
 $seans = $_COOKIE["PHPSESSID"];
 $pristatymas = "";
 
+
 // IDEA: Pasitikrinu ar vartotojas šeipsau užklydo jai taip siunčiu į index.
 if (!isset($_POST['submit'])) {
   if (!isset($_GET['pristatymas'])) {
         header("Location: index.php");
+        exit();
+  } else {
+      $pristatymas = $_GET['pristatymas'];
   }
+}
+
+// IDEA: Pradedu error žinučių nustatymą.
+switch ($pristatymas) {
+  case 'empty':
+    $pristatymas = "Užpildėte nevisus laukus!";
+    break;
+  case 'neisraidziu':
+    $pristatymas = "Vardas ir pavardė turi būti tik iš raidžių!";
+    break;
+  case 'neisskaiciu':
+    $pristatymas = "Telefono numeris turi būti iš skaičių!";
+    break;
+  case 'zip_neiskaiciu':
+    $pristatymas = "Pašto kodas turi būti tik iš skaičių!";
+    break;
+  case 'email':
+    $pristatymas = "Tokio elektroninio pašto adreso nėra!";
+    break;
+  case 'name_length':
+    $pristatymas = "Vardas negali būti ilgesnis kaip 100 simbolių!";
+    break;
+  case '$sur_name':
+    $pristatymas = "Pavardė negali būti ilgesnė kaip 100 simbolių!";
+    break;
+  case 'tel_length':
+    $pristatymas = "Telefono numeris negali būti ilgesnis kaip 12 simbolių!";
+    break;
+  case 'adres_length':
+    $pristatymas = "Adresas negali būti ilgesnis kaip 500 simbolių!";
+    break;
+  case 'mail_length':
+    $pristatymas = "elektroninio pašto adresas negali būti ilgesnis kaip 150 simbolių!";
+    break;
+  case 'zip_length':
+    $pristatymas = "Pašto kodas negali būti ilgesnis kaip 5 simboliai!";
+    break;
+
+  default:
+    $pristatymas = "";
+    break;
 }
 // IDEA: Pradedu html formą kuruoje gausim pristatymo duomenis.
 ?>
