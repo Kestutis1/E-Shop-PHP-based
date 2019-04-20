@@ -56,6 +56,11 @@ switch ($pristatymas) {
     $pristatymas = "";
     break;
 }
+
+// IDEA: Pasiimu iš post du paslėptus kintamuosius, kad persiūsti su formą į kitą puslapį
+  $bendra_suma = $_POST['bendra_suma'];
+  $bendras_kiekis = $_POST['bendras_kiekis'];
+
 // IDEA: Pradedu html formą kuruoje gausim pristatymo duomenis.
 ?>
 
@@ -72,6 +77,8 @@ switch ($pristatymas) {
     <input type="text" name="adres" placeholder="Adresas">
     <input type="text" name="mail" placeholder="Jūsų elektroninio pašto adresas">
     <input type="number" name="zip" placeholder="Jūsų pašto kodas">
+    <input type= 'hidden' name='bendra_suma' value='<?php echo $bendra_suma; ?>' />
+    <input type= 'hidden' name='bendras_kiekis' value='<?php echo $bendras_kiekis; ?>' />
     <button type="submit" name="submit">Tęsti</button>
     </form>
 

@@ -69,6 +69,8 @@ echo "<section><article><div class = 'flex-container'>
       <div><div class = 'centre'>
       $display_block</div></div><br /><P>Bendra mikėtina suma $bendra_suma
       €</P></div><form class='text_center' action='pristatyti.php' method='post'>
+          <input type= 'hidden' name='bendra_suma' value='$bendra_suma' />
+          <input type= 'hidden' name='bendras_kiekis' value='$bendras_kiekis' />
           <button type='submit' name='submit'>Tęsti</button>
       </form>
     </section>
