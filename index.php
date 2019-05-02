@@ -55,4 +55,4 @@ include('header.php');
           <div><h1>Parduotuvės prekių pasirinkimas
           </h1><br /><div class = 'centre'>
           $display_block</div></div></div></article></section>";
-include('footer.php'); ?>
+include_once('footer.php'); ?>

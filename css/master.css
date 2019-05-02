@@ -283,3 +283,51 @@ a:hover {
       padding-left: 0%;
     }
 }
+/*-------------------slapuku baneris -----------------------*/
+.cookiePopup {
+  z-index: 999999;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #ccc;
+  padding: 15px 20px;
+  color: #333;
+  font-size: 12px;
+  font-family: Verdana,Arial,Helvetica,sans-serif;
+  line-height: 17px;
+}
+div {
+  display: block;
+}
+.cookiePopupWrapper {
+    width: 90%;
+    margin: 0 auto;
+}
+.clearfix {
+    display: block;
+}
+.cookiePopupText {
+    float: left;
+    width: 800px;
+    margin: 0 auto;
+}
+.clearfix {
+    display: block;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.cookiePopupButton button {
+    background: #303030;
+    color: #fff;
+    padding: 10px 15px;
+    font-weight: normal;
+}
+.cookiePopupButton button {
+    cursor: pointer;
+}

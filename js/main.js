@@ -84,3 +84,8 @@ console.log(alteredURL);
 history.pushState({
     id: 'Pavyko'
 }, 'Pavyko uzsiregistruoti', alteredURL);
+
+//Paslepiam Banerį dėl Slapuko naudojimo taisyklių
+function slapukai () {
+  document.getElementById("p2").style.display = "none";
+}

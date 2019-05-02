@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
                                               } else {
                                                   $sql = "INSERT INTO užsakymo_info (order_name, order_surname, order_addres, order_zip, order_tel, order_email,
                                                                                     status, order_date, bendras_kiekis, bendra_suma)
-                                                          VALUES('$name', '$sur_name', '$adres', '$zip', '$telefonas', '$mail', ' ', now(), '$bendras_kiekis', '$bendra_suma');";
+                                                          VALUES('$name', '$sur_name', '$adres', '$zip', '$telefonas', '$mail', 'pending', now(), '$bendras_kiekis', '$bendra_suma');";
 
                                                   $res = mysqli_query(getPrisijungimas(), $sql);
                                                   $uzsakymo_id = mysqli_insert_id(getPrisijungimas());

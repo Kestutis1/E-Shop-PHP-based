@@ -1,5 +1,6 @@
 <?php
       include('header.php');
+      include_once('db.php');
       // IDEA: Pasitikrinam ar užėjo administrartorius jai ne siunčiam į index.php
       if ($_SESSION['u_uid'] != "Administratorius") {
             header("Location: index.php");
@@ -70,7 +71,15 @@
                           echo "<h3 class='centre'>Jūs nepasirinkote nuotraukos todėl prekei priskirta standartinė nuotrauka.</h3>";
                           exit();
                       }
-            }
+                    }
+
+                    // IDEA: pradedu skriptą skirtą ištrinti senesnius negu savaitė krepšelio įrašus.
+                    $d = strtotime("last week");
+                    $dt = date("Y-m-d h:i:sa", $d);
+                    echo $dt;
+
+                    $sql = "DELETE FROM krepselis WHERE date_added < '$dt';";
+                    $res = mysqli_query(getPrisijungimas(), $sql);
      ?>
               <form name="ikelimas" id="ikelimas" method="post" action="foto.php" enctype="multipart/form-data">
                 <label>Pasirinkti prekės kategoriją</label><br />
